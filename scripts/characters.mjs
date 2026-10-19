@@ -39,10 +39,10 @@ function body(shape, accent) {
 }
 
 function arm(x1, y1, x2, y2) {
-  return `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${C.ink}" stroke-width="18" stroke-linecap="round" fill="none"/>
-    <path d="M${x1} ${y1} L${x2} ${y2}" stroke="${C.body}" stroke-width="7" stroke-linecap="round" fill="none"/>`;
+  return `<path d="M${x1} ${y1} L${x2} ${y2}" stroke="${C.ink}" stroke-width="32" stroke-linecap="round" fill="none"/>
+    <path d="M${x1} ${y1} L${x2} ${y2}" stroke="${C.body}" stroke-width="21" stroke-linecap="round" fill="none"/>`;
 }
-const glove = (x, y, r = 14) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.glove}" ${S} stroke-width="5"/>
+const glove = (x, y, r0 = 14, r = r0 + 4) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.glove}" ${S} stroke-width="5"/>
     <path d="M${x - r + 5} ${y + r - 7} q${r - 5} 6 ${2 * r - 10} 0" stroke="${C.ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
 
 // 소품과 소품을 든 손 (오른쪽 팔)
@@ -102,7 +102,6 @@ export function characterSVG(name, { title = '' } = {}) {
     <rect x="78" y="214" width="38" height="24" rx="12" fill="${a}" ${S} stroke-width="6"/>
     <rect x="124" y="214" width="38" height="24" rx="12" fill="${a}" ${S} stroke-width="6"/>
     ${body(c.shape, a)}
-    <g class="ch-wave">${arm(74, 172, 44, 136)}${glove(40, 130, 15)}</g>
     <path d="M120 50 V26" stroke="${C.ink}" stroke-width="12" stroke-linecap="round"/>
     <path d="M120 50 V26" stroke="${C.leafDark}" stroke-width="5" stroke-linecap="round"/>
     <g class="ch-sprout">
@@ -119,6 +118,7 @@ export function characterSVG(name, { title = '' } = {}) {
     <ellipse cx="158" cy="122" rx="8" ry="5" fill="${C.cheek}"/>
     <path d="M110 120 Q120 130 130 120" stroke="${C.eye}" stroke-width="4.5" fill="none" stroke-linecap="round"/>
     <path d="M72 64 q10 -10 26 -12" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <g class="ch-wave">${arm(78, 176, 36, 150)}${glove(30, 144, 15)}</g>
     ${prop(c.prop, a)}
   </g>
 </svg>`;
@@ -166,7 +166,7 @@ export function logoSVG({ tag = true, sticker = false } = {}) {
 }
 
 // 단독 SVG 파일 (움직임 포함) 만들기
-const STANDALONE_STYLE = `<style>.ch-hop{animation:h 2.4s ease-in-out infinite}.ch-wave{transform-box:view-box;transform-origin:74px 172px;animation:w 1.6s ease-in-out infinite}.ch-eye{transform-box:fill-box;transform-origin:center;animation:b 4.5s infinite}@keyframes h{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes w{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}@keyframes b{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>`;
+const STANDALONE_STYLE = `<style>.ch-hop{animation:h 2.4s ease-in-out infinite}.ch-wave{transform-box:view-box;transform-origin:78px 176px;animation:w 1.6s ease-in-out infinite}.ch-eye{transform-box:fill-box;transform-origin:center;animation:b 4.5s infinite}@keyframes h{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes w{0%,100%{transform:rotate(0)}50%{transform:rotate(18deg)}}@keyframes b{0%,94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}</style>`;
 
 if (import.meta.url === `file://${process.argv[1]}` || process.argv[1]?.endsWith('characters.mjs')) {
   const { mkdir, writeFile } = await import('node:fs/promises');

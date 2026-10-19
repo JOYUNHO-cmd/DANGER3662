@@ -378,7 +378,7 @@ input[type="radio"] { accent-color: var(--main); width: 24px; height: 24px; flex
 /* 움직임: 폴짝 · 손 흔들기 · 눈 깜빡임 */
 .ch-hop { animation: ch-hop 2.4s ease-in-out infinite; }
 .ch-shadow { transform-box: fill-box; transform-origin: center; animation: ch-shadow 2.4s ease-in-out infinite; }
-.ch-wave { transform-box: view-box; transform-origin: 74px 172px; animation: ch-wave 1.8s ease-in-out infinite; }
+.ch-wave { transform-box: view-box; transform-origin: 78px 176px; animation: ch-wave 1.8s ease-in-out infinite; }
 .ch-eye { transform-box: fill-box; transform-origin: center; animation: ch-blink 4.6s infinite; }
 .ch-glow { animation: ch-glow 1.6s ease-in-out infinite; }
 .ch-work .ch-hop, .ch-work .ch-shadow { animation-delay: -.5s; }
