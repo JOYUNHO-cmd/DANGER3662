@@ -18,7 +18,8 @@ for (const page of pages) {
   check(new Set(ids).size === ids.length, `${page}: 중복 ID`);
   check(html.includes("connect-src 'none'") && html.includes("form-action 'none'"), `${page}: 외부 전송 차단 누락`);
   const allowedExternal = ['tel:01098828882', 'https://open.kakao.com/o/sAi9HdTi', 'mailto:Danger3662@naver.com'];
-  const stripped = allowedExternal.reduce((text, url) => text.replaceAll(`href="${url}"`, ''), html);
+  const siteUrl = 'https://incomparable-axolotl-f5e6ab.netlify.app';
+  const stripped = allowedExternal.reduce((text, url) => text.replaceAll(`href="${url}"`, ''), html).replaceAll(siteUrl, '');
   check(!/https?:\/\/|\btel:|\bmailto:/.test(stripped), `${page}: 예상하지 않은 외부 주소`);
 }
 for (const [file, html] of docs) {

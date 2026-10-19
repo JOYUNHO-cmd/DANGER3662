@@ -1,6 +1,9 @@
 import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises';
 import { characterSVG, logoSVG } from './characters.mjs';
 
+// 사이트 주소 — 도메인을 연결하면 여기만 바꾸고 다시 빌드하세요.
+const SITE_URL = 'https://incomparable-axolotl-f5e6ab.netlify.app';
+
 // 연락 방법 — 바뀌면 여기만 고치고 node scripts/build.mjs 실행
 const CONTACT = {
   tel: 'tel:01098828882',
@@ -45,6 +48,17 @@ function shell(id, title, description, content) {
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
   <title>${title} | AI 1:1 교육·컨설팅</title>
   <meta name="description" content="${description}">
+  <link rel="canonical" href="${SITE_URL}/${id === 'index' ? '' : id + '.html'}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:site_name" content="AI 1:1 교육·컨설팅">
+  <meta property="og:title" content="${title} | AI 1:1 교육·컨설팅">
+  <meta property="og:description" content="${description}">
+  <meta property="og:url" content="${SITE_URL}/${id === 'index' ? '' : id + '.html'}">
+  <meta property="og:image" content="${SITE_URL}/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/fonts.css">
   <link rel="stylesheet" href="assets/styles.css">
@@ -88,7 +102,14 @@ for (const [id, title, description] of pages) {
 for (const name of ['styles.css', 'fonts.css', 'app.js', 'favicon.svg']) {
   await copyFile(path.join(root, `src/assets/${name}`), path.join(root, `dist/assets/${name}`));
 }
-await writeFile(path.join(root, 'dist/robots.txt'), 'User-agent: *\nAllow: /\n', 'utf8');
+await writeFile(path.join(root, 'dist/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`, 'utf8');
+const today = new Date(Date.now() + 9 * 3600e3).toISOString().slice(0, 10); // 한국 날짜
+await writeFile(path.join(root, 'dist/sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${pages.map(([id]) => `  <url><loc>${SITE_URL}/${id === 'index' ? '' : id + '.html'}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
+</urlset>
+`, 'utf8');
+try { await copyFile(path.join(root, 'src/assets/og-image.png'), path.join(root, 'dist/assets/og-image.png')); } catch {}
 console.log('완료: dist/에 6개 한국어 정적 페이지를 만들었습니다.');
 
 // 글꼴(Noto Sans KR, SIL OFL)은 사이트 안에 포함 — 외부 연결 없이 동작
