@@ -1,0 +1,11 @@
+{
+  "name": "ai-visit-website-draft",
+  "private": true,
+  "version": "0.0.0",
+  "description": "AI 방문 1:1 교육·컨설팅 홈페이지 구조 초안",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/serve.mjs",
+    "check": "node scripts/check.mjs"
+  }
+}

@@ -1,0 +1,10 @@
+# Netlify 배포 설정: dist 폴더를 그대로 공개합니다 (빌드 명령 없음).
+[build]
+  publish = "dist"
+  command = ""
+
+# 글꼴·그림은 오래 저장(캐시)해 빠르게 표시
+[[headers]]
+  for = "/assets/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

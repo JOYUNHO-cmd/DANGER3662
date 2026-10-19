@@ -1,0 +1,10 @@
+node_modules/
+.DS_Store
+Thumbs.db
+# 예전 PNG 캐릭터와 디자인 전 백업은 사이트에서 쓰지 않으므로 깃에 올리지 않음
+src/assets/characters/
+src/assets/characters-v2/
+dist/assets/characters/
+dist/assets/characters-v2/
+_backup-before-game/
+previews/
