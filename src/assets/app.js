@@ -33,7 +33,8 @@
     });
 
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 900) closeMenu(false);
+      // CSS가 데스크톱 메뉴로 전환할 때만 열린 상태를 초기화합니다.
+      if (window.getComputedStyle(menuToggle).display === 'none') closeMenu(false);
     });
   }
 

@@ -424,7 +424,8 @@ input[type="radio"] { accent-color: var(--main); width: 24px; height: 24px; flex
   .cta-panel { padding: 38px; }
   .contact-layout { grid-template-columns: 1.2fr .8fr; gap: 28px; }
 }
-@media (max-width: 900px) {
+/* 메뉴가 한 줄에 들어가지 않는 태블릿 너비에서는 접이식 메뉴를 사용합니다. */
+@media (max-width: 1024px) {
   .header-inner { flex-wrap: wrap; min-height: 84px; gap: 0; padding-block: 14px; }
   #primary-nav { width: 100%; flex-direction: column; align-items: stretch; gap: 8px; padding-top: 16px; }
   #primary-nav a { min-height: 56px; font-size: 19px; padding-inline: 16px; background: var(--white); border: 3px solid var(--ink); }
@@ -433,6 +434,8 @@ input[type="radio"] { accent-color: var(--main); width: 24px; height: 24px; flex
   .js .menu-toggle { display: inline-flex; align-items: center; gap: 10px; }
   .js #primary-nav { display: none; }
   .js body.nav-open #primary-nav { display: flex; }
+}
+@media (max-width: 900px) {
   .hero, .page-intro { padding-block: 52px 60px; }
   .hero { grid-template-columns: 1fr; gap: 80px; }
   .journey-board .hero-mascot { margin-top: -96px; }
