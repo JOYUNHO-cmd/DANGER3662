@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises'
 import { characterSVG, logoSVG } from './characters.mjs';
 
 // 사이트 주소 — 도메인을 연결하면 여기만 바꾸고 다시 빌드하세요.
-const SITE_URL = 'https://incomparable-axolotl-f5e6ab.netlify.app';
+const SITE_URL = 'https://danger3662.pages.dev';
 
 // 연락 방법 — 바뀌면 여기만 고치고 node scripts/build.mjs 실행
 const CONTACT = {
