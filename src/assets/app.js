@@ -6,6 +6,7 @@
 
   var menuToggle = document.getElementById('menu-toggle');
   var primaryNav = document.getElementById('primary-nav');
+  var menuLabel = document.getElementById('menu-label');
 
   if (menuToggle && primaryNav) {
     menuToggle.removeAttribute('hidden');
@@ -13,6 +14,7 @@
     function closeMenu(restoreFocus) {
       document.body.classList.remove('nav-open');
       menuToggle.setAttribute('aria-expanded', 'false');
+      if (menuLabel) menuLabel.textContent = '메뉴 열기';
       if (restoreFocus) menuToggle.focus();
     }
 
@@ -20,6 +22,7 @@
       var expanded = menuToggle.getAttribute('aria-expanded') === 'true';
       document.body.classList.toggle('nav-open', !expanded);
       menuToggle.setAttribute('aria-expanded', String(!expanded));
+      if (menuLabel) menuLabel.textContent = expanded ? '메뉴 열기' : '메뉴 닫기';
     });
 
     primaryNav.addEventListener('click', function (event) {
@@ -44,11 +47,12 @@
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var setMotion = function (off) {
       document.documentElement.classList.toggle('motion-off', off);
-      motionToggle.setAttribute('aria-pressed', String(off));
-      motionToggle.textContent = off ? '▶ 움직임 켜기' : '■ 움직임 멈추기';
+      document.documentElement.classList.toggle('motion-on', !off);
+      motionToggle.setAttribute('aria-pressed', String(!off));
+      motionToggle.textContent = off ? '캐릭터 움직이기' : '움직임 멈추기';
     };
-    setMotion(Boolean(reduce));
-    motionToggle.hidden = false;
+    setMotion(true);
+    motionToggle.hidden = Boolean(reduce);
     motionToggle.addEventListener('click', function () {
       setMotion(!document.documentElement.classList.contains('motion-off'));
     });

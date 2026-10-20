@@ -155,7 +155,7 @@ svg { max-width: 100%; }
 .empathy-section h2 { font-size: clamp(30px, 3vw, 40px); }
 .empathy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
 .empathy-grid > div { position: relative; background: var(--white); border: var(--line); border-radius: var(--radius); padding: 22px 22px 24px; box-shadow: 5px 5px 0 var(--ink); margin-bottom: 26px; }
-.empathy-grid > div::after { content: ""; position: absolute; left: 30px; bottom: -30px; width: 36px; height: 34px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 34'%3E%3Cpath d='M3 0 L6 31 L30 0 Z' fill='%23fffefa'/%3E%3Cpath d='M3 0 L6 31 L30 0' fill='none' stroke='%2313261e' stroke-width='4' stroke-linejoin='round'/%3E%3Crect x='5' y='0' width='22' height='4.2' fill='%23fffefa'/%3E%3C/svg%3E") no-repeat; }
+.empathy-grid > div::after { content: ""; position: absolute; left: 30px; bottom: -30px; width: 36px; height: 30px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 30'%3E%3Cpath d='M0 0H36L8 30Z' fill='%2313261e'/%3E%3Cpath d='M4.1 0H30.5L10 22Z' fill='%23fffefa'/%3E%3C/svg%3E") no-repeat; pointer-events: none; }
 .empathy-grid h3 { font-size: 21px; letter-spacing: -.03em; margin-bottom: 10px; }
 .empathy-grid p { font-size: 16px; color: var(--sub); }
 .line-icon { display: inline-grid; place-items: center; width: 44px; height: 44px; background: var(--yellow); border: 3px solid var(--ink); border-radius: 50%; font-size: 20px; font-weight: 900; margin-bottom: 12px; }
@@ -425,7 +425,7 @@ input[type="radio"] { accent-color: var(--main); width: 24px; height: 24px; flex
   .contact-layout { grid-template-columns: 1.2fr .8fr; gap: 28px; }
 }
 /* 메뉴가 한 줄에 들어가지 않는 태블릿 너비에서는 접이식 메뉴를 사용합니다. */
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .header-inner { flex-wrap: wrap; min-height: 84px; gap: 0; padding-block: 14px; }
   #primary-nav { width: 100%; flex-direction: column; align-items: stretch; gap: 8px; padding-top: 16px; }
   #primary-nav a { min-height: 56px; font-size: 19px; padding-inline: 16px; background: var(--white); border: 3px solid var(--ink); }
@@ -594,4 +594,90 @@ input[type="radio"] { accent-color: var(--main); width: 24px; height: 24px; flex
 @media (max-width: 600px) {
   .draft-bar .container { flex-direction: row; align-items: center; justify-content: space-between; padding-block: 6px; }
   .motion-toggle { margin: 0; min-height: 40px; flex: 0 0 auto; }
+}
+
+/* ---------- 편하게 읽고 누르기 ---------- */
+:root { --reading-body: 1.25rem; --reading-small: 1.125rem; }
+body { font-size: var(--reading-body); line-height: 1.8; }
+p + p { margin-top: 16px; }
+.hero-description, .lead, .card p, .card li, .path-card p, .path-card ul,
+.section-heading p:not(.eyebrow), .step-list p, .process-list p,
+details > p, details > div, .cta-panel p:not(.eyebrow),
+.info-list dt, .info-list dd, .example-preview p, .example-preview li {
+  font-size: var(--reading-body);
+}
+.muted, .note, .hero-footnote, .journey-caption, .journey-row p, .board-note,
+.section-note, .empathy-grid p, .path-label span, .outcome-list p,
+.outcome-list > .muted, .method-steps p, .instructor-note p,
+.example-card-copy p, .footer-main p, .footer-info, .footer-bottom {
+  font-size: var(--reading-small);
+}
+.hero-description, .lead, .section-heading p:not(.eyebrow) { max-width: 38em; }
+.card p, .card li, .path-card p, .section-heading p:not(.eyebrow),
+.empathy-grid p, .outcome-list p, .method-steps p, .example-card-copy p,
+.info-list dd, details > p, details > div { color: var(--ink); }
+.cta-panel .section-heading p, .site-footer p { color: var(--cream); }
+.hero h1, .page-intro h1, .hero-promise, .cta-panel h2,
+.examples-section h2, .course-character-heading h3 { text-shadow: none; }
+.hero::before, .page-intro::before, .cta-panel {
+  background-image: radial-gradient(circle, rgba(255,255,255,.08) 2px, transparent 2.1px);
+}
+.section-tinted { background-image: none; }
+.game-badge { letter-spacing: 0; }
+.path-label::before { content: "선택"; letter-spacing: 0; }
+.stage-number::before, .method-steps li > span::before { content: ""; }
+.stage-number::after, .method-steps li > span::after { content: "단계"; margin-left: 3px; letter-spacing: 0; }
+.help-options .stage-number::before { content: "선택"; margin-right: 4px; }
+.help-options .stage-number::after { content: none; }
+body[data-page="business"] .grid-3 .stage-number::before { content: "예시"; margin-right: 4px; }
+body[data-page="business"] .grid-3 .stage-number::after { content: none; }
+.stage-number { font-size: 1rem; letter-spacing: 0; }
+.text-link, .board-link, .course-nav a { font-size: var(--reading-body); min-height: 56px; }
+.button { min-height: 64px; font-size: var(--reading-body); }
+.course-nav a { white-space: normal; }
+summary, .course-step summary, .card details > summary {
+  min-height: 72px; font-size: var(--reading-body); line-height: 1.6;
+}
+.course-step summary { flex-wrap: wrap; gap: 8px 14px; }
+.course-step summary > span:last-child { flex: 1 1 180px; min-width: 0; }
+.draft-bar { font-size: 1rem; }
+.draft-bar .container { flex-wrap: wrap; padding-block: 6px; }
+.top-contact a { display: inline-flex; align-items: center; min-height: 48px; }
+.motion-toggle { min-height: 48px; font-size: 1rem; }
+.menu-toggle { min-height: 56px; }
+#primary-nav a { min-height: 56px; font-size: var(--reading-small); }
+/* 문서가 처음 보일 때부터 정지합니다. 움직임은 사용자가 켠 경우에만 재생합니다. */
+html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .mascot-disc) { animation: none !important; }
+.footer-info a, .footer-bottom a { display: inline-block; padding-block: 8px; }
+@media (max-width: 1100px) {
+  .top-contact { display: none; }
+}
+@media (max-width: 1200px) {
+  #primary-nav a { font-size: var(--reading-body); }
+}
+@media (max-width: 900px) {
+  html { scroll-padding-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  a, button, summary { scroll-margin-bottom: calc(100px + env(safe-area-inset-bottom)); }
+  .site-footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
+@media (max-width: 600px) {
+  .outcome-list, .method-steps { grid-template-columns: 1fr; gap: 24px; }
+  .outcome-list > div, .method-steps li { padding: 24px; }
+  .outcome-list h3, .method-steps h3, .empathy-grid h3 { font-size: 1.5rem; }
+  .empathy-grid { gap: 24px; }
+  .hero h1, .page-intro h1 { text-shadow: none; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .hero-actions .button { width: 100%; }
+  .draft-bar .container { gap: 10px; }
+  .draft-bar .container > span:first-child { flex: 1 1 140px; }
+  .motion-toggle { margin-left: auto; }
+  .process-list > li { flex-direction: column; gap: 12px; }
+  .course-step summary { padding-left: 18px; padding-right: 64px; }
+  .course-step summary > span:last-child { flex-basis: 100%; }
+  .quick-contact a { min-width: 0; }
+  .header-inner { gap: 16px; }
+  .js .menu-toggle { width: 100%; justify-content: center; }
+}
+@media (max-width: 380px) {
+  .quick-contact a::before { display: none; }
 }

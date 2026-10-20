@@ -66,11 +66,11 @@ function shell(id, title, description, content) {
 </head>
 <body data-page="${id}">
   <a class="skip-link" href="#main">본문 바로가기</a>
-  <div class="draft-bar"><div class="container"><span><span class="draft-dot" aria-hidden="true"></span>찾아가는 1:1 AI 교육 · 업무 자동화</span><span class="top-contact">${telLink('', `☎ ${CONTACT.telText}`)}${kakaoLink('', '카카오톡 상담')}</span><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" hidden>■ 움직임 멈추기</button></div></div>
+  <div class="draft-bar"><div class="container"><span><span class="draft-dot" aria-hidden="true"></span>찾아가는 1:1 AI 교육 · 업무 자동화</span><span class="top-contact">${telLink('', `☎ ${CONTACT.telText}`)}${kakaoLink('', '카카오톡 상담')}</span><button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" hidden>캐릭터 움직이기</button></div></div>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="AI 1:1 교육·컨설팅, 홈으로"><span class="brand-symbol" aria-hidden="true">${logoSVG({ tag: false })}</span><span class="brand-name">AI <b class="brand-hl">1:1</b> 교육·컨설팅<small>방문 교육 · 업무 자동화</small></span></a>
-      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav">메뉴 <span aria-hidden="true">☰</span></button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span id="menu-label">메뉴 열기</span> <span aria-hidden="true">☰</span></button>
       <nav id="primary-nav" aria-label="주 메뉴">${navigation}</nav>
     </div>
   </header>
