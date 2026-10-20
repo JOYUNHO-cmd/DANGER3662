@@ -14,16 +14,30 @@
     <path d="M120 49 V26" stroke="#2F6B52" stroke-width="4" stroke-linecap="round"/>
     <path d="M118 28 C104 10 84 14 80 24 C92 36 110 36 118 28Z M122 26 C134 4 160 6 166 18 C152 34 132 36 122 26Z" fill="#6BBF59" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
   </g>
-    <path d="M78 184 L66 157" stroke="#13261E" stroke-width="32" stroke-linecap="round" fill="none"/>
-    <path d="M78 184 L66 157" stroke="#FFFBEF" stroke-width="21" stroke-linecap="round" fill="none"/><circle cx="69" cy="154" r="16" fill="#FFFFFF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
-    <path d="M58 163 q11 6 22 0" stroke="#13261E" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M73 146 L90 134" stroke="#13261E" stroke-width="12" stroke-linecap="round"/><path d="M73 146 L90 134" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round"/>
-    <path d="M166 177 L201 169" stroke="#13261E" stroke-width="32" stroke-linecap="round" fill="none"/>
-    <path d="M166 177 L201 169" stroke="#FFFBEF" stroke-width="21" stroke-linecap="round" fill="none"/>
+    <path d="M87.60 176.80
+    L72.40 163.20
+    Q63.00 164.00 59.60 172.80
+    L68.40 191.20
+    Q87.00 196.00 87.60 176.80Z"
+    fill="#FFFBEF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/><g class="ch-hand" transform="translate(66 168) rotate(45) scale(0.68)">
+    <path d="M-11 0 Q-18-3-18-13 L-18-20 Q-18-26-12-27 V-50 Q-12-57-6-57 Q0-57 0-50 V-31 Q3-36 7-34 Q10-33 10-29 Q14-32 18-28 Q21-26 20-22 Q26-25 29-18 L26-8 Q24 0 11 0Z" fill="#FFFFFF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="4.5"/>
+    <path d="M-10-43 H-2 M0-29 V-19 M10-26 V-17 M20-20 L19-13 M-14-15 L-5-23 Q-1-26 3-22 Q7-18 3-14 L-3-8" fill="none" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.8"/>
+    <rect x="-11" y="-4" width="22" height="9" rx="3" fill="#DCEBDD" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="4"/>
+  </g>
+    <path d="M163.97 188.83
+    L199.65 190.88
+    Q205.93 183.84 202.35 175.12
+    L168.03 165.17
+    Q151.22 174.47 163.97 188.83Z"
+    fill="#FFFBEF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
       <g class="ch-glow"><path d="M201 98 V87 M225 107 L233 99 M177 106 L171 98 M231 132 H237" stroke="#FFD54F" stroke-width="5" stroke-linecap="round"/></g>
       <path d="M179 128 A23 23 0 1 1 219 143 L213 154 H190 L185 143 Q179 136 179 128Z" fill="#FFD54F" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
       <path d="M194 132 L201 142 L208 132 M201 142 V154" stroke="#13261E" stroke-width="4" fill="none" stroke-linecap="round"/>
       <rect x="190" y="153" width="23" height="15" rx="5" fill="#5FB4F0" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
-      <circle cx="202" cy="177" r="14" fill="#FFFFFF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="5"/>
-    <path d="M193 184 q9 6 18 0" stroke="#13261E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <g class="ch-hand" transform="translate(201 185) rotate(0) scale(0.74)">
+    <path d="M-11 0 L-15-10 Q-23-13-23-23 V-30 Q-23-36-17-36 H8 Q20-36 21-24 V-13 Q21-3 11 0Z" fill="#FFFFFF" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="4.5"/>
+    <path d="M-17-27 H0 M-17-20 H-1 M-15-13 H-3 M11-12 L2-20 Q-3-24 0-29 Q3-34 8-30 L19-23" fill="none" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="2.8"/>
+    <rect x="-11" y="-4" width="22" height="9" rx="3" fill="#DCEBDD" stroke="#13261E" stroke-linejoin="round" stroke-linecap="round" stroke-width="4"/>
+  </g>
   </g>
 </svg>
