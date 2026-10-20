@@ -95,11 +95,12 @@ function inlineMascots(html) {
 
 await mkdir(path.join(root, 'dist/assets/fonts'), { recursive: true });
 await writeFile(path.join(root, 'src/assets/favicon.svg'), logoSVG({ tag: false }), 'utf8');
+await writeFile(path.join(root, 'src/assets/hero-logo.svg'), logoSVG({ tag: false, framed: false }), 'utf8');
 for (const [id, title, description] of pages) {
   const content = await readFile(path.join(root, `src/pages/${id}.html`), 'utf8');
   await writeFile(path.join(root, `dist/${id}.html`), shell(id, title, description, fillContact(inlineMascots(content))).replaceAll(' xmlns="http://www.w3.org/2000/svg"', ''), 'utf8');
 }
-for (const name of ['styles.css', 'fonts.css', 'app.js', 'favicon.svg']) {
+for (const name of ['styles.css', 'fonts.css', 'app.js', 'favicon.svg', 'hero-logo.svg']) {
   await copyFile(path.join(root, `src/assets/${name}`), path.join(root, `dist/assets/${name}`));
 }
 await writeFile(path.join(root, 'dist/robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${SITE_URL}/sitemap.xml\n`, 'utf8');

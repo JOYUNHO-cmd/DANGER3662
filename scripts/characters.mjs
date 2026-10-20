@@ -142,16 +142,17 @@ export function headSVG({ sticker = false } = {}) {
 
 // 로고(엠블럼): 초록 둥근 배지 + 로봇 얼굴 + 새싹 + 노란 1:1 꼬리표
 // tag:false → 파비콘처럼 작은 곳용 / sticker:true → 초록·어두운 바탕용 흰 테두리
-export function logoSVG({ tag = true, sticker = false } = {}) {
+export function logoSVG({ tag = true, sticker = false, framed = true } = {}) {
   const main = '#2F6B52';
   const st = sticker ? `<rect x="1" y="5" width="118" height="114" rx="36" fill="#fff"/>` : '';
   const tagEl = tag ? `
   <rect x="70" y="86" width="46" height="28" rx="10" fill="${C.ink}"/>
   <rect x="67" y="83" width="46" height="28" rx="10" fill="${C.yellow}" ${S} stroke-width="4"/>
   <text x="90" y="103.5" text-anchor="middle" font-family="'Noto Sans KR','Malgun Gothic',sans-serif" font-size="17" font-weight="900" fill="${C.ink}">1:1</text>` : '';
-  return `<svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${st}
+  const frame = framed ? `
   <rect x="11" y="21" width="98" height="92" rx="28" fill="${C.ink}"/>
-  <rect x="7" y="17" width="98" height="92" rx="28" fill="${main}" ${S} stroke-width="5"/>
+  <rect x="7" y="17" width="98" height="92" rx="28" fill="${main}" ${S} stroke-width="5"/>` : '';
+  return `<svg viewBox="${framed ? '0 0 120 120' : '8 0 96 98'}" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${st}${frame}
   <circle cx="20" cy="62" r="8" fill="${C.yellow}" ${S} stroke-width="4"/>
   <circle cx="92" cy="62" r="8" fill="${C.yellow}" ${S} stroke-width="4"/>
   <rect x="22" y="32" width="68" height="60" rx="24" fill="${C.body}" ${S} stroke-width="4.5"/>

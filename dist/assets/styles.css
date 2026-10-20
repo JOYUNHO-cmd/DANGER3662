@@ -686,9 +686,16 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
 /* 제목의 원래 너비를 먼저 확보하고, 모바일의 남는 공간만 로고에 사용합니다. */
 @media screen and (max-width: 600px) {
   .hero-heading-row { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); column-gap: 12px; align-items: center; }
-  .hero-mobile-logo { display: block; width: 100%; max-width: 96px; height: auto; min-width: 0; justify-self: center; pointer-events: none; }
+  .hero-mobile-logo { display: block; width: 100%; max-width: 120px; height: auto; min-width: 0; justify-self: center; pointer-events: none; }
 }
 @media screen and (max-width: 340px) {
   .hero-heading-row { display: block; }
   .hero-mobile-logo { display: none; }
+}
+@keyframes hero-logo-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) {
+  .motion-on .hero-mobile-logo { animation: hero-logo-float 3s ease-in-out infinite; }
 }
