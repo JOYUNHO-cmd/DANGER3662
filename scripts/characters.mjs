@@ -64,10 +64,10 @@ function prop(kind, accent) {
       <path d="M76 189 Q98 185 123 199 Q148 185 170 189 V217 Q147 215 123 227 Q99 215 76 217Z" fill="${C.body}"/>
       <path d="M123 191 V231 M86 199 L110 206 M136 206 L160 199" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/>
       ${glove(68, 212, 9)}${glove(180, 212, 9)}`;
-    case 'heart': return arm(164, 172, 155, 208) + `
-      <path d="M154 158 H207 Q225 158 225 176 V191 Q225 208 207 208 H182 L164 222 L165 208 H154 Q140 208 140 191 V176 Q140 158 154 158Z" fill="${C.body}" ${S} stroke-width="5"/>
-      <path d="M183 196 C158 182 162 167 172 168 Q180 168 183 176 Q188 166 196 169 C209 175 198 188 183 196Z" fill="${accent}" ${S} stroke-width="4"/>
-      ${glove(151, 213, 9)}`;
+    case 'heart': return arm(78, 178, 69, 206) + arm(164, 178, 175, 206) + `
+      <path d="M87 177 H157 Q173 177 173 193 V204 Q173 220 157 220 H128 L113 230 L115 220 H87 Q71 220 71 204 V193 Q71 177 87 177Z" fill="${C.body}" ${S} stroke-width="5"/>
+      <path d="M122 212 C97 198 102 184 113 187 Q119 188 122 194 Q127 184 135 188 C148 196 138 206 122 212Z" fill="${accent}" ${S} stroke-width="4"/>
+      ${glove(72, 211, 9)}${glove(172, 211, 9)}`;
     case 'laptop': return bentArm('M78 180 Q48 208 91 224') + bentArm('M164 180 Q207 208 169 224') + `
       <rect x="78" y="166" width="104" height="52" rx="9" fill="${C.screen}" ${S} stroke-width="5"/>
       <path d="M101 187 H127 V201 H154" stroke="${C.eye}" stroke-width="5" fill="none"/>
@@ -159,8 +159,7 @@ function head(name, accent) {
 }
 
 function gesture(name) {
-  if (name === 'learn' || name === 'work') return '';
-  if (name === 'help') return `${bentArm('M78 179 Q39 181 42 151 L45 124')}${glove(44, 124, 9)}`;
+  if (name === 'learn' || name === 'help' || name === 'work') return '';
   if (name === 'idea') return `${arm(78, 184, 66, 157)}${glove(69, 154, 12)}<path d="M73 146 L90 134" stroke="${C.ink}" stroke-width="12" stroke-linecap="round"/><path d="M73 146 L90 134" stroke="${C.glove}" stroke-width="5" stroke-linecap="round"/>`;
   if (name === 'write') return arm(80, 182, 51, 205);
   return `<g class="ch-wave">${arm(78, 178, 42, 157)}${glove(34, 149, 13)}<path d="M26 139 L19 122 Q18 116 24 115 Q29 114 32 121 L37 135 L43 120 Q46 114 51 117 Q56 120 52 127 L44 145" fill="${C.glove}" ${S} stroke-width="5"/></g>`;
