@@ -50,52 +50,32 @@ function arm(x1, y1, x2, y2) {
 const glove = (x, y, r0 = 14, r = r0 + 4) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${C.glove}" ${S} stroke-width="5"/>
     <path d="M${x - r + 5} ${y + r - 7} q${r - 5} 6 ${2 * r - 10} 0" stroke="${C.ink}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
 
-// 통통한 장갑 실루엣: 관절·손목 장식 없이 손가락과 손바닥을 연결합니다.
-function softHand(x, y, pose, angle = 0) {
-  const shapes = {
-    point: {
-      outline: 'M-9 15 C-20 13-22 3-17-6 Q-14-11-7-8 V-23 Q-7-30 0-30 Q7-30 7-23 V-8 Q14-10 17-3 Q24-1 22 9 Q20 18 9 18Z',
-      fold: 'M-15-3 Q-9-6-5 0 Q-2 4-8 7'
-    },
-    open: {
-      outline: 'M-9 17 Q-19 12-19 3 L-26-7 Q-30-12-25-16 Q-21-19-17-13 L-13-8 L-14-21 Q-14-27-9-27 Q-4-27-4-21 L-3-12 V-27 Q-3-33 2-33 Q7-33 7-27 V-12 L8-24 Q9-30 14-29 Q19-28 18-22 L16-9 L19-18 Q22-23 26-20 Q30-17 27-11 L22 5 Q19 16 8 18Z',
-      fold: 'M-12-2 Q-5 0-5 7'
-    },
-    thumbs: {
-      outline: 'M-12 15 Q-20 10-18-1 L-17-8 Q-15-13-8-15 L-6-24 Q-4-31 2-28 Q7-26 5-19 L4-10 H13 Q23-10 23-1 L20 9 Q16 18 5 18Z',
-      fold: 'M-7-9 Q-2-4-5 3'
-    },
-    hold: {
-      outline: 'M-10-12 C-1-18 12-13 16-4 Q21 2 16 11 Q8 19-4 15 Q-15 13-16 2 Q-18-5-10-12Z',
-      fold: 'M11-3 Q2-10-2-4 Q-5 1 1 5'
-    }
-  };
-  const hand = shapes[pose];
-  return `<g transform="translate(${x} ${y}) rotate(${angle}) scale(.85)">
-    <path d="${hand.outline}" fill="${C.glove}" ${S} stroke-width="5.5"/>
-    <path d="${hand.fold}" fill="none" ${S} stroke-width="3.5"/>
-  </g>`;
+// 소품으로 이어지는 팔은 둥글게 굽히고, 손은 기존 장갑 모양을 공유합니다.
+function bentArm(d) {
+  return `<path d="${d}" stroke="${C.ink}" stroke-width="32" stroke-linecap="round" fill="none"/>
+    <path d="${d}" stroke="${C.body}" stroke-width="21" stroke-linecap="round" fill="none"/>`;
 }
 
 // 작은 크기에서도 구분되는 큰 소품과, 역할에 맞는 손 자세.
 function prop(kind, accent) {
   switch (kind) {
-    case 'book': return arm(164, 172, 207, 211) + `
-      <path d="M125 175 Q151 170 174 185 Q197 170 223 175 V220 Q197 217 174 232 Q151 217 125 220Z" fill="${accent}" ${S} stroke-width="6"/>
-      <path d="M134 183 Q153 182 174 194 Q195 182 214 183 V211 Q193 211 174 223 Q153 211 134 211Z" fill="${C.body}"/>
-      <path d="M174 186 V227 M143 195 L162 202 M186 202 L205 195" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/>
-      ${softHand(210, 216, 'hold', 15)}`;
+    case 'book': return arm(78, 178, 68, 208) + arm(164, 178, 180, 208) + `
+      <path d="M67 181 Q96 174 123 190 Q150 174 179 181 V226 Q149 219 123 236 Q97 219 67 226Z" fill="${accent}" ${S} stroke-width="6"/>
+      <path d="M76 189 Q98 185 123 199 Q148 185 170 189 V217 Q147 215 123 227 Q99 215 76 217Z" fill="${C.body}"/>
+      <path d="M123 191 V231 M86 199 L110 206 M136 206 L160 199" stroke="${C.ink}" stroke-width="4" stroke-linecap="round"/>
+      ${glove(68, 212, 9)}${glove(180, 212, 9)}`;
     case 'heart': return arm(164, 172, 155, 208) + `
       <path d="M154 158 H207 Q225 158 225 176 V191 Q225 208 207 208 H182 L164 222 L165 208 H154 Q140 208 140 191 V176 Q140 158 154 158Z" fill="${C.body}" ${S} stroke-width="5"/>
       <path d="M183 196 C158 182 162 167 172 168 Q180 168 183 176 Q188 166 196 169 C209 175 198 188 183 196Z" fill="${accent}" ${S} stroke-width="4"/>
-      ${softHand(151, 213, 'hold', -15)}`;
-    case 'laptop': return arm(164, 172, 207, 216) + `
-      <rect x="114" y="169" width="100" height="56" rx="9" fill="${C.screen}" ${S} stroke-width="5"/>
-      <path d="M137 192 H163 V207 H190" stroke="${C.eye}" stroke-width="5" fill="none"/>
-      <rect x="131" y="184" width="15" height="15" rx="4" fill="${accent}" stroke="${C.body}" stroke-width="3"/>
-      <rect x="182" y="200" width="15" height="15" rx="4" fill="${C.yellow}" stroke="${C.body}" stroke-width="3"/>
-      <path d="M106 225 H222 L213 235 H116Z" fill="${C.body}" ${S} stroke-width="5"/>
-      ${softHand(212, 221, 'hold', 10)}`;
+      ${glove(151, 213, 9)}`;
+    case 'laptop': return bentArm('M78 180 Q48 208 91 224') + bentArm('M164 180 Q207 208 169 224') + `
+      <rect x="78" y="166" width="104" height="52" rx="9" fill="${C.screen}" ${S} stroke-width="5"/>
+      <path d="M101 187 H127 V201 H154" stroke="${C.eye}" stroke-width="5" fill="none"/>
+      <rect x="95" y="180" width="15" height="15" rx="4" fill="${accent}" stroke="${C.body}" stroke-width="3"/>
+      <rect x="146" y="194" width="15" height="15" rx="4" fill="${C.yellow}" stroke="${C.body}" stroke-width="3"/>
+      <path d="M73 218 H187 L197 235 H63Z" fill="${C.body}" ${S} stroke-width="5"/>
+      <path d="M110 224 H150 M121 230 H139" stroke="${C.leafDark}" stroke-width="3" stroke-linecap="round"/>
+      ${glove(91, 224, 8)}${glove(169, 224, 8)}`;
     case 'bulb': return arm(166, 177, 201, 169) + `
       <g class="ch-glow"><path d="M201 98 V87 M225 107 L233 99 M177 106 L171 98 M231 132 H237" stroke="${C.yellow}" stroke-width="5" stroke-linecap="round"/></g>
       <path d="M179 128 A23 23 0 1 1 219 143 L213 154 H190 L185 143 Q179 136 179 128Z" fill="${C.yellow}" ${S} stroke-width="5"/>
@@ -179,9 +159,8 @@ function head(name, accent) {
 }
 
 function gesture(name) {
-  if (name === 'learn') return `<g class="ch-wave">${arm(78, 180, 41, 164)}${softHand(35, 157, 'point', -8)}</g>`;
-  if (name === 'help') return `<g class="ch-wave">${arm(78, 178, 41, 162)}${softHand(32, 153, 'open', -12)}</g>`;
-  if (name === 'work') return `${arm(78, 180, 51, 184)}${softHand(49, 181, 'thumbs', -5)}`;
+  if (name === 'learn' || name === 'work') return '';
+  if (name === 'help') return `${bentArm('M78 179 Q39 181 42 151 L45 124')}${glove(44, 124, 9)}`;
   if (name === 'idea') return `${arm(78, 184, 66, 157)}${glove(69, 154, 12)}<path d="M73 146 L90 134" stroke="${C.ink}" stroke-width="12" stroke-linecap="round"/><path d="M73 146 L90 134" stroke="${C.glove}" stroke-width="5" stroke-linecap="round"/>`;
   if (name === 'write') return arm(80, 182, 51, 205);
   return `<g class="ch-wave">${arm(78, 178, 42, 157)}${glove(34, 149, 13)}<path d="M26 139 L19 122 Q18 116 24 115 Q29 114 32 121 L37 135 L43 120 Q46 114 51 117 Q56 120 52 127 L44 145" fill="${C.glove}" ${S} stroke-width="5"/></g>`;
@@ -191,6 +170,7 @@ export function characterSVG(name, { title = '' } = {}) {
   const c = CHARACTERS[name];
   if (!c) throw new Error(`알 수 없는 캐릭터: ${name}`);
   const a = c.accent;
+  const pose = gesture(name);
   return `<svg class="ch ch-${name}" viewBox="0 0 240 260" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">${title ? `<title>${title}</title>` : ''}
   <ellipse class="ch-shadow" cx="120" cy="248" rx="62" ry="8" fill="${C.ink}" fill-opacity=".18"/>
   <g class="ch-hop">
@@ -198,8 +178,7 @@ export function characterSVG(name, { title = '' } = {}) {
     <rect x="126" y="214" width="40" height="24" rx="12" fill="${a}" ${S} stroke-width="6" transform="rotate(${name === 'idea' ? 12 : 4} 146 226)"/>
     ${body(name, a)}
     ${head(name, a)}
-    ${gesture(name)}
-    ${prop(c.prop, a)}
+    ${pose ? `${pose}\n    ` : ''}${prop(c.prop, a)}
   </g>
 </svg>`;
 }
