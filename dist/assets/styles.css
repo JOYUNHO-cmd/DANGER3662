@@ -119,6 +119,7 @@ svg { max-width: 100%; }
 .hero .eyebrow { background: var(--ink); }
 .hero h1 { color: var(--white); text-shadow: 4px 4px 0 var(--ink); line-height: 1.22; letter-spacing: -.04em; }
 .hero h1 > span { color: var(--yellow); }
+.hero-mobile-logo { display: none; }
 .hero-promise { margin-top: 26px; font-weight: 900; font-size: 26px; letter-spacing: -.03em; color: var(--white); text-shadow: 2px 2px 0 var(--ink); }
 .hero-description { max-width: 580px; margin-top: 14px; color: var(--cream); font-size: 19px; line-height: 1.75; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px; }
@@ -680,4 +681,14 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
 }
 @media (max-width: 380px) {
   .quick-contact a::before { display: none; }
+}
+
+/* 제목의 원래 너비를 먼저 확보하고, 모바일의 남는 공간만 로고에 사용합니다. */
+@media screen and (max-width: 600px) {
+  .hero-heading-row { display: grid; grid-template-columns: minmax(0, max-content) minmax(0, 1fr); column-gap: 12px; align-items: center; }
+  .hero-mobile-logo { display: block; width: 100%; max-width: 96px; height: auto; min-width: 0; justify-self: center; pointer-events: none; }
+}
+@media screen and (max-width: 340px) {
+  .hero-heading-row { display: block; }
+  .hero-mobile-logo { display: none; }
 }
