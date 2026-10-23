@@ -85,11 +85,12 @@ function shell(id, title, description, content) {
 </html>\n`;
 }
 
-// 캐릭터 자리(data-mascot)에 SVG 캐릭터를 넣습니다. 큰 캐릭터(hero/intro)는 회전 원판과 함께.
+// 첫 화면 캐릭터는 배경 원판 없이, 상세 소개 캐릭터에만 원판을 넣습니다.
 function inlineMascots(html) {
   return html.replace(/<span class="([^"]*)" data-mascot="(\w+)" aria-hidden="true"><\/span>/g, (_, cls, name) => {
     const big = /\b(hero-mascot|intro-mascot)\b/.test(cls);
-    return `<span class="${cls}${big ? ' mascot-stage' : ''}" aria-hidden="true">${big ? '<span class="mascot-disc"></span>' : ''}${characterSVG(name)}</span>`;
+    const disc = /\bintro-mascot\b/.test(cls);
+    return `<span class="${cls}${big ? ' mascot-stage' : ''}" aria-hidden="true">${disc ? '<span class="mascot-disc"></span>' : ''}${characterSVG(name)}</span>`;
   });
 }
 

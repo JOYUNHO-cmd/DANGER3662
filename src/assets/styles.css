@@ -699,3 +699,34 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
 @media screen and (max-width: 600px) and (prefers-reduced-motion: no-preference) {
   .motion-on .hero-mobile-logo { animation: hero-logo-float 3s ease-in-out infinite; }
 }
+
+/* 캐릭터를 키우되 좁은 제목 칸에서는 세로로 배치해 본문 너비를 보존합니다. */
+.chapter-heading { flex-wrap: wrap; }
+.chapter-heading h2 { flex-basis: 220px; }
+.chapter-mascot { width: clamp(140px, 13vw, 180px); height: auto; aspect-ratio: 13 / 14; }
+.outcome-layout .chapter-mascot, .faq-layout .chapter-mascot, .cta-panel .chapter-mascot { width: 150px; height: auto; }
+.task-mascot { width: 112px; height: auto; aspect-ratio: 13 / 14; }
+.outcome-list .outcome-character { width: 140px; height: 140px; }
+.outcome-list .task-mascot { width: 120px; height: auto; }
+.card-mascot { width: 170px; height: auto; }
+.example-mascot { width: 145px; height: auto; aspect-ratio: 13 / 14; }
+.journey-board .hero-mascot { width: 200px; height: auto; margin: 0 0 8px auto; }
+.journey-board .chapter-heading { align-items: center; }
+.intro-mascot { width: 300px; height: auto; }
+.course-character-heading h3 { min-width: 0; }
+@media (max-width: 900px) {
+  .intro-mascot { width: 240px; }
+}
+@media (max-width: 600px) {
+  .chapter-heading { gap: 12px; }
+  .chapter-heading h2 { flex-basis: 100%; }
+  .chapter-heading > .mascot { order: -1; margin: 0 0 0 auto; }
+  .chapter-mascot, .outcome-layout .chapter-mascot, .faq-layout .chapter-mascot, .cta-panel .chapter-mascot { width: 140px; height: auto; }
+  .journey-board .hero-mascot { width: 170px; margin: 0 0 0 auto; }
+  .card-mascot, .example-mascot { float: none; width: 150px; height: auto; margin: 0 0 16px auto; }
+  .intro-mascot { width: 210px; }
+  .task-mascot { width: 96px; }
+  .course-character-heading { gap: 12px; }
+  .outcome-list .outcome-character { width: 132px; height: 132px; }
+  .outcome-list .task-mascot { width: 112px; height: auto; }
+}
