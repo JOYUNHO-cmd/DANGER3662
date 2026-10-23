@@ -749,3 +749,16 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
   .path-card { grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; }
   .path-card > .card-mascot { width: 96px; }
 }
+
+/* 교육·업무 상세: 제목과 본문의 읽기 너비를 확보합니다. */
+@media (max-width: 900px) {
+  .detail-intro { display: grid; grid-template-columns: minmax(0, 1fr) clamp(120px, 36vw, 160px); column-gap: 16px; row-gap: 18px; align-items: center; }
+  .detail-intro > * { grid-column: 1 / -1; }
+  .detail-intro > .eyebrow { grid-column: 1; grid-row: 1; margin: 0; justify-self: start; }
+  .detail-intro > .intro-mascot { grid-column: 2; grid-row: 1; float: none; width: 100%; margin: 0; }
+  .detail-intro > h1 { margin: 0; }
+  .detail-intro > .lead, .detail-intro > .button-row { margin-top: 0; }
+  .detail-intro > .note { margin-top: 12px; }
+  .course-character-heading h3 .muted { display: block; margin: 6px 0 0; }
+  .course-character-heading { padding-block: 12px; }
+}
