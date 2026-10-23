@@ -766,3 +766,13 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
 @media (max-width: 900px) {
   .detail-intro .balanced-title { text-wrap: balance; }
 }
+
+/* 사례 카드는 분류와 캐릭터를 한 줄에 묶고 긴 설명은 전체 너비로 둡니다. */
+@media (max-width: 600px) {
+  .character-example { display: grid; grid-template-columns: minmax(0, 1fr) clamp(96px, 30vw, 132px); column-gap: 14px; }
+  .character-example > * { grid-column: 1 / -1; min-width: 0; }
+  .character-example > .badge { grid-column: 1; grid-row: 1; align-self: center; justify-self: start; margin: 0 0 16px; }
+  .character-example > .example-mascot { grid-column: 2; grid-row: 1; width: 100%; height: auto; margin: 0 0 16px; }
+  .character-example > h3 { text-wrap: balance; }
+  .character-example::after { display: none; }
+}
