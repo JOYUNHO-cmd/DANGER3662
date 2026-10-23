@@ -762,3 +762,7 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
   .course-character-heading h3 .muted { display: block; margin: 6px 0 0; }
   .course-character-heading { padding-block: 12px; }
 }
+
+@media (max-width: 900px) {
+  .detail-intro .balanced-title { text-wrap: balance; }
+}
