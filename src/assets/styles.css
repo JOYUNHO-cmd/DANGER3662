@@ -730,3 +730,22 @@ html:not(.motion-on) :is(.ch-hop, .ch-shadow, .ch-wave, .ch-eye, .ch-glow, .masc
   .outcome-list .outcome-character { width: 132px; height: 132px; }
   .outcome-list .task-mascot { width: 112px; height: auto; }
 }
+
+/* 모바일: 제목 옆 공간을 활용하고 본문은 항상 전체 너비로 읽습니다. */
+@media (max-width: 600px) {
+  .chapter-heading { display: grid; grid-template-columns: minmax(0, 1fr) clamp(108px, 30vw, 140px); align-items: center; gap: 12px; }
+  .chapter-heading > h2 { min-width: 0; }
+  .chapter-heading > .mascot,
+  .journey-board .chapter-heading > .hero-mascot { order: initial; width: 100%; margin: 0; }
+  .path-card { display: grid; grid-template-columns: minmax(0, 1fr) 120px; column-gap: 12px; }
+  .path-card > * { grid-column: 1 / -1; }
+  .path-card > .path-label { grid-row: 1; }
+  .path-card > h3 { grid-column: 1; grid-row: 2; align-self: center; }
+  .path-card > .card-mascot { grid-column: 2; grid-row: 2; width: 120px; margin: 0 0 16px; align-self: center; }
+  .path-card > p { clear: both; }
+}
+@media (max-width: 359px) {
+  .chapter-heading { grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; }
+  .path-card { grid-template-columns: minmax(0, 1fr) 96px; gap: 10px; }
+  .path-card > .card-mascot { width: 96px; }
+}
